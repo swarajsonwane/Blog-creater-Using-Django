@@ -1,0 +1,48 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+{% block title %}{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+
+
+                <div class="panel-body">
+                    <h3> Create a New Account</h3>
+                    <!--here it form will auto get all fields of table and then they are transferred to from_template-->
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        <!--now here django gave us all album fields and we have to get inputs for each so better from new template and include in our area-->
+                        {% for field in form %}
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <span class="text-danger small">{{field.errors}}</span>
+    </div>
+    <label class="control-label col-sm-2">{{field.label_tag}}</label>
+    <div class="col-sm-10">{{field}}</div>
+</div>
+{%endfor%}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2  col-sm-10">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
